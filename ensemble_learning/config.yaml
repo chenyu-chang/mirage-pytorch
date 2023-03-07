@@ -1,0 +1,24 @@
+# data_path: D:/SPECT/Second_year_data/SPECT_long_axis_Pre_Test_GT_noerode_0725
+data_path: D:\SPECT\Second_year_data\.SPECT_323218
+# tmp_path: D:\SPECT\Second_year_data\.SPECT_temp_size32_pad
+sample_path: D:/SPECT/Second_year_data/sample_group_0329_no_reg
+save_path: D:/mirage-pytorch/exp/swin-transformer_3D/ensemble
+exp_name: "1118_blur_ConvEnsembleModel"
+model: 
+  name: ConvEnsembleModel
+  number: 5
+device: cuda:0
+num_workers: 0
+fold: 10 #-1 means no folder
+batch_size: 64
+shuffle: true
+optimizer: Adam
+lr: 1e-03
+loss: BCEWithLogitsLoss
+epochs: 9999
+patience: 100
+lr_scheduler: None
+class_name: !!python/tuple
+- LAD
+- LCX
+- RCA

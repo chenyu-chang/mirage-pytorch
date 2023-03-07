@@ -1,0 +1,43 @@
+# data_path: D:/SPECT/Second_year_data/SPECT_long_axis_Pre_Test_GT_noerode_0725
+data_path: D:\SPECT\Second_year_data\.SPECT_323218
+# tmp_path: D:\SPECT\Second_year_data\.SPECT_temp_size32_pad
+sample_path: D:\SPECT\Second_year_data\sample_groups\sample_group_1227_no_reg_5
+save_path: E:\mirage-pytorch\exp\swin-transformer_3D\LCX
+exp_name: "embed_dim_128_patch_size_222_window_size_443_randomfold"
+model: 
+  name: SwinTransformer
+  args:
+    embed_dim: 128
+    in_chans: 4
+    num_classes: 1
+    depths: !!python/tuple
+    - 2
+    - 2
+    - 2
+    patch_size: !!python/tuple
+    - 2
+    - 2
+    - 2
+    window_size: !!python/tuple
+    - 4
+    - 4
+    - 3
+device: cuda:0
+num_workers: 0
+fold: 10 #-1 means no folder
+batch_size: 16
+shuffle: False
+seed: None
+optimizer: Adam
+lr: 1e-04
+loss: BCEWithLogitsLoss
+epochs: 9999
+patience: 300
+lr_scheduler: None
+class_name: !!python/tuple
+- LCX
+dataset: SPECT_LCX
+trainer:
+  name: binary_classification
+  args:
+    monitor: val_loss
